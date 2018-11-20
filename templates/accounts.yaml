@@ -42,6 +42,16 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
+  AWSIAMJoeSmithUser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: joe.smith@sagebase.org
+      Groups:
+        - !Ref AWSIAMAllUsersGroup
+        - !Ref AWSIAMDeveloperUsersGroup
+      LoginProfile:
+        Password: !Ref InitNewUserPassword
+        PasswordResetRequired: true
   AWSIAMPhilSnyderUser:
     Type: 'AWS::IAM::User'
     Properties:
