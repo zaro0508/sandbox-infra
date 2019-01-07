@@ -3,9 +3,6 @@ language: python
 python: 3.5
 cache: pip
 fast_finish: true
-branches:
-  only:
-  - master
 install:
   - pip install cfn-lint
   - wget https://github.com/Sage-Bionetworks/infra-utils/archive/master.zip -O /tmp/infra-utils.zip
