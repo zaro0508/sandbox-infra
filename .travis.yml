@@ -12,7 +12,7 @@ install:
 stages:
   - name: validate
   - name: deploy
-    if: "$TRAVIS_PULL_REQUEST" = "false"
+    if: branch = master AND type = push
 jobs:
   include:
     - stage: validate
