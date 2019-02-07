@@ -13,17 +13,12 @@ install:
   - pip install git+git://github.com/zaro0508/sceptre-date-resolver.git
 stages:
   - name: validate
-    if: type = pull_request
-  - name: test
-    if: branch = master AND type = push
   - name: deploy
     if: branch = master AND type = push
 jobs:
   include:
     - stage: validate
       script: cfn-lint ./templates/**/*
-    - stage: test
-      script: sceptre validate prod
     - stage: deploy
       script: sceptre launch prod --yes
 
