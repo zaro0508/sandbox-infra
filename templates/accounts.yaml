@@ -112,6 +112,18 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
+  # temporary user for MSSM to transfer files to Sage.
+  # console access is disabled, api key to allow access to MSSM bucket
+  AWSIAMMssmUser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: mssm@sagebase.org
+      Groups:
+        - !Ref AWSIAMAllUsersGroup
+  AWSIAMMssmUserAccessKey:
+    Type: 'AWS::IAM::AccessKey'
+    Properties:
+      UserName: !Ref AWSIAMMssmUser
   AWSIAMDeveloperUsersGroup:
     Type: 'AWS::IAM::Group'
     Properties:
@@ -307,3 +319,11 @@ Outputs:
     Value: !Ref AWSIAMEnforceMfaPolicy
     Export:
       Name: !Sub '${AWS::Region}-${AWS::StackName}-EnforceMfaPolicy'
+  AWSIAMMssmUserAccessKey:
+    Value: !Ref AWSIAMMssmUserAccessKey
+    Export:
+      Name: !Sub '${AWS::Region}-${AWS::StackName}-MssmUserAccessKey'
+  AWSIAMMssmSecretUserAccessKey:
+    Value: !GetAtt AWSIAMMssmUserAccessKey.SecretAccessKey
+    Export:
+      Name: !Sub '${AWS::Region}-${AWS::StackName}-MssmUserSecretAccessKey'
