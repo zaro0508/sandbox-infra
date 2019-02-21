@@ -118,8 +118,6 @@ Resources:
     Type: 'AWS::IAM::User'
     Properties:
       UserName: mssm@sagebase.org
-      Groups:
-        - !Ref AWSIAMAllUsersGroup
   AWSIAMMssmUserAccessKey:
     Type: 'AWS::IAM::AccessKey'
     Properties:
