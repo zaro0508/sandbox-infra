@@ -10,6 +10,16 @@ Resources:
   # 1. Detach or remove the following user resources: login profile, attached
   #    MFA device, access-keys, ssh-keys, and policies.
   # 2. Detach the user from all groups.
+  AWSIAMMilenNikolovUser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: milen.nikolov@sagebase.org
+      Groups:
+        - !Ref AWSIAMAllUsersGroup
+        - !Ref AWSIAMDeveloperUsersGroup
+      LoginProfile:
+        Password: !Ref InitNewUserPassword
+        PasswordResetRequired: true
   AWSIAMZimingDongTestUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -102,6 +112,26 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
+  AWSIAMJakeGockleyUser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: jake.gockley@sagebase.org
+      Groups:
+        - !Ref AWSIAMAllUsersGroup
+        - !Ref AWSIAMDeveloperUsersGroup
+      LoginProfile:
+        Password: !Ref InitNewUserPassword
+        PasswordResetRequired: true
+  # temporary user for MSSM to transfer files to Sage.
+  # console access is disabled, api key to allow access to MSSM bucket
+  AWSIAMMssmUser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: mssm@sagebase.org
+  AWSIAMMssmUserAccessKey:
+    Type: 'AWS::IAM::AccessKey'
+    Properties:
+      UserName: !Ref AWSIAMMssmUser
   AWSIAMDeveloperUsersGroup:
     Type: 'AWS::IAM::Group'
     Properties:
@@ -178,13 +208,6 @@ Resources:
       Roles:
         -
           !Ref AWSIAMAdminRole
-  AWSIAMInstanceProfile:
-    Type: "AWS::IAM::InstanceProfile"
-    Properties:
-      Path: "/"
-      Roles:
-        -
-          !Ref "AWSIAMAdminRole"
   AWSIAMAllUsersGroup:
     Type: 'AWS::IAM::Group'
     Properties:
@@ -304,3 +327,11 @@ Outputs:
     Value: !Ref AWSIAMEnforceMfaPolicy
     Export:
       Name: !Sub '${AWS::Region}-${AWS::StackName}-EnforceMfaPolicy'
+  AWSIAMMssmUserAccessKey:
+    Value: !Ref AWSIAMMssmUserAccessKey
+    Export:
+      Name: !Sub '${AWS::Region}-${AWS::StackName}-MssmUserAccessKey'
+  AWSIAMMssmSecretUserAccessKey:
+    Value: !GetAtt AWSIAMMssmUserAccessKey.SecretAccessKey
+    Export:
+      Name: !Sub '${AWS::Region}-${AWS::StackName}-MssmUserSecretAccessKey'
