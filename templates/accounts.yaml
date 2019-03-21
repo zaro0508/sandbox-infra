@@ -132,7 +132,7 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
-  AWSIAMThomasSchaffterUser:
+  AWSIAMKimYenLadiaUser:
     Type: 'AWS::IAM::User'
     Properties:
       UserName: kimyen.ladia@sagebase.org
