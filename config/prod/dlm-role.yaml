@@ -1,0 +1,7 @@
+template_path: remote/dlm-role.yaml
+stack_name: dlm-role
+hooks:
+  before_create:
+    - !cmd "curl https://s3.amazonaws.com/{{stack_group_config.admincentral_cf_bucket}}/aws-infra/master/dlm-role.yaml --create-dirs -o templates/remote/dlm-role.yaml"
+  before_update:
+    - !cmd "curl https://s3.amazonaws.com/{{stack_group_config.admincentral_cf_bucket}}/aws-infra/master/dlm-role.yaml --create-dirs -o templates/remote/dlm-role.yaml"
