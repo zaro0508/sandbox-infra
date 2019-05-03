@@ -203,7 +203,7 @@ Resources:
                 - !GetAtt AWSIAMXavierSchildwachterUser.Arn
                 - !GetAtt AWSIAMKhaiDoUser.Arn
                 - !GetAtt AWSIAMThomasYuUser.Arn
-                - !GetAtt AWSIAMPhilSnyderUser.Arn
+                - !GetAtt AWSIAMTessThyerUser.Arn
             Action:
               - "sts:AssumeRole"
       Path: "/"
