@@ -225,6 +225,7 @@ Resources:
                 - !GetAtt AWSIAMThomasYuUser.Arn
                 - !GetAtt AWSIAMTessThyerUser.Arn
                 - !GetAtt AWSIAMAaronHaydenUser.Arn
+                - !GetAtt AWSIAMKennethDailyUser.Arn
             Action:
               - "sts:AssumeRole"
       Path: "/"
