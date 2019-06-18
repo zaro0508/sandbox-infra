@@ -10,6 +10,16 @@ Resources:
   # 1. Detach or remove the following user resources: login profile, attached
   #    MFA device, access-keys, ssh-keys, and policies.
   # 2. Detach the user from all groups.
+  AWSIAMRebeccaElyanowUser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: rebecca.elyanow@sagebase.org
+      Groups:
+        - !Ref AWSIAMAllUsersGroup
+        - !Ref AWSIAMDeveloperUsersGroup
+      LoginProfile:
+        Password: !Ref InitNewUserPassword
+        PasswordResetRequired: true
   AWSIAMAndrewLambUser:
     Type: 'AWS::IAM::User'
     Properties:
