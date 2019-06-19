@@ -172,6 +172,15 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
+  AWSIAMThomasSchaffterPhccpAutoDeployUser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: thomas.schaffter+phccp-autodeploy@sagebase.org
+      Groups:
+        - !Ref AWSIAMCodeDeployUsersGroup
+      LoginProfile:
+        Password: !Ref InitNewUserPassword
+        PasswordResetRequired: true
   AWSIAMKimYenLadiaUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -230,6 +239,11 @@ Resources:
         - arn:aws:iam::aws:policy/IAMReadOnlyAccess
         - !Ref AWSIAMDynamoDenyDeletePolicy
         - !Ref AWSIAMRdsDenyDeletePolicy
+  AWSIAMCodeDeployUsersGroup:
+    Type: 'AWS::IAM::Group'
+    Properties:
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AWSCodeDeployFullAccess
   AWSIAMAdminRole:
     Type: "AWS::IAM::Role"
     Properties:
