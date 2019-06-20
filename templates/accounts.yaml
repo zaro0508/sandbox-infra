@@ -172,11 +172,6 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
-  PhccpAutoDeployUser:
-    Type: 'AWS::IAM::User'
-    Properties:
-      Groups:
-        - !Ref AWSIAMCodeDeployUsersGroup
   AWSIAMKimYenLadiaUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -217,6 +212,12 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
+  PhccpServiceUser:
+    Type: 'AWS::IAM::User'
+  PhccpServiceUserUserAccessKey:
+    Type: 'AWS::IAM::AccessKey'
+    Properties:
+      UserName: !Ref PhccpServiceUser
   # temporary user for MSSM to transfer files to Sage.
   # console access is disabled, api key to allow access to MSSM bucket
   AWSIAMMssmUser:
@@ -235,9 +236,20 @@ Resources:
         - arn:aws:iam::aws:policy/IAMReadOnlyAccess
         - !Ref AWSIAMDynamoDenyDeletePolicy
         - !Ref AWSIAMRdsDenyDeletePolicy
-  AWSIAMCodeDeployUsersGroup:
-    Type: 'AWS::IAM::Group'
+  CodeDeployServiceRole:
+    Type: "AWS::IAM::Role"
     Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+          Statement:
+            -
+              Effect: "Allow"
+                Principal:
+                  AWS:
+                    - !GetAtt PhccpServiceUser.Arn
+                Action:
+                  - "sts:AssumeRole"
+      Path: "/"
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AWSCodeDeployFullAccess
   AWSIAMAdminRole:
@@ -437,3 +449,15 @@ Outputs:
     Value: !GetAtt AWSIAMMssmUserAccessKey.SecretAccessKey
     Export:
       Name: !Sub '${AWS::Region}-${AWS::StackName}-MssmUserSecretAccessKey'
+  PhccpServiceUserAccessKey:
+    Value: !Ref PhccpServiceUser
+    Export:
+      Name: !Sub '${AWS::Region}-${AWS::StackName}-PhccpServiceUserAccessKey'
+  PhccpServiceUserSecretAccessKey:
+    Value: !GetAtt PhccpServiceUserUserAccessKey.SecretAccessKey
+    Export:
+      Name: !Sub '${AWS::Region}-${AWS::StackName}-PhccpServiceUserSecretAccessKey'
+  CodeDeployServiceRoleArn:
+    Value: !GetAtt CodeDeployServiceRole.Arn
+    Export:
+      Name: !Sub '${AWS::Region}-${AWS::StackName}-CodeDeployServiceRoleArn'
