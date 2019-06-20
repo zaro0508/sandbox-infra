@@ -172,15 +172,11 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
-  AWSIAMThomasSchaffterPhccpAutoDeployUser:
+  PhccpAutoDeployUser:
     Type: 'AWS::IAM::User'
     Properties:
-      UserName: thomas.schaffter+phccp-autodeploy@sagebase.org
       Groups:
         - !Ref AWSIAMCodeDeployUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMKimYenLadiaUser:
     Type: 'AWS::IAM::User'
     Properties:
