@@ -241,14 +241,14 @@ Resources:
     Properties:
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
-          Statement:
-            -
-              Effect: "Allow"
-                Principal:
-                  AWS:
-                    - !GetAtt PhccpServiceUser.Arn
-                Action:
-                  - "sts:AssumeRole"
+        Statement:
+          -
+            Effect: "Allow"
+            Principal:
+              AWS:
+                - !GetAtt PhccpServiceUser.Arn
+            Action:
+              - "sts:AssumeRole"
       Path: "/"
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AWSCodeDeployFullAccess
