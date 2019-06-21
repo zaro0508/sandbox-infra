@@ -248,6 +248,7 @@ Resources:
             Principal:
               AWS:
                 - !GetAtt PhccpServiceUser.Arn
+                - !GetAtt AWSIAMThomasSchaffterUser.Arn
             Action:
               - "sts:AssumeRole"
       Path: "/"
