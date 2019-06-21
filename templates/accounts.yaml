@@ -212,9 +212,10 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
+  # for deployments from Sage-Bionetworks/PHCCollaborationPortal repo
   PhccpServiceUser:
     Type: 'AWS::IAM::User'
-  PhccpServiceUserUserAccessKey:
+  PhccpServiceUserAccessKey:
     Type: 'AWS::IAM::AccessKey'
     Properties:
       UserName: !Ref PhccpServiceUser
@@ -450,11 +451,11 @@ Outputs:
     Export:
       Name: !Sub '${AWS::Region}-${AWS::StackName}-MssmUserSecretAccessKey'
   PhccpServiceUserAccessKey:
-    Value: !Ref PhccpServiceUser
+    Value: !Ref PhccpServiceUserAccessKey
     Export:
       Name: !Sub '${AWS::Region}-${AWS::StackName}-PhccpServiceUserAccessKey'
   PhccpServiceUserSecretAccessKey:
-    Value: !GetAtt PhccpServiceUserUserAccessKey.SecretAccessKey
+    Value: !GetAtt PhccpServiceUserAccessKey.SecretAccessKey
     Export:
       Name: !Sub '${AWS::Region}-${AWS::StackName}-PhccpServiceUserSecretAccessKey'
   CodeDeployServiceRoleArn:
