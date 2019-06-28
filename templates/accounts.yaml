@@ -10,7 +10,7 @@ Resources:
   # 1. Detach or remove the following user resources: login profile, attached
   #    MFA device, access-keys, ssh-keys, and policies.
   # 2. Detach the user from all groups.
- AWSIAMJinetaBanerjeeUser:
+  AWSIAMJinetaBanerjeeUser:
     Type: 'AWS::IAM::User'
     Properties:
       UserName: jineta.banerjee@sagebase.org
@@ -20,7 +20,7 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true 
- AWSIAMBrianWhiteUser:
+  AWSIAMBrianWhiteUser:
     Type: 'AWS::IAM::User'
     Properties:
       UserName: brian.white@sagebase.org
