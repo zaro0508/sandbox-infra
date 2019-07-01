@@ -258,7 +258,7 @@ Resources:
         - !Ref AWSIAMDynamoDenyDeletePolicy
         - !Ref AWSIAMRdsDenyDeletePolicy
         - arn:aws:iam::aws:policy/AWSCodeDeployFullAccess
-  CodeDeployServiceRole:
+  CodeDeployDeployerRole:
     Type: "AWS::IAM::Role"
     Properties:
       AssumeRolePolicyDocument:
@@ -275,7 +275,7 @@ Resources:
       Path: "/"
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AWSCodeDeployFullAccess
-  CodeDeployDeployerRole:
+  CodeDeployManagerRole:
     Type: "AWS::IAM::Role"
     Properties:
       AssumeRolePolicyDocument:
@@ -289,7 +289,7 @@ Resources:
             Action:
               - "sts:AssumeRole"
       Path: "/"
-  CodeDeployDeployerPolicy:
+  CodeDeployManagerPolicy:
     Type: "AWS::IAM::Policy"
     Properties:
       PolicyName: CodeDeployDeployerPolicy
@@ -322,9 +322,9 @@ Resources:
             - iam:RemoveRoleFromInstanceProfile
             - s3:*
             Resource: "*"
-        Roles:
-          -
-            !Ref CodeDeployDeployerRole
+      Roles:
+        -
+          !Ref CodeDeployManagerRole
 
   AWSIAMAdminRole:
     Type: "AWS::IAM::Role"
@@ -523,7 +523,7 @@ Outputs:
     Value: !GetAtt PhccpServiceUserAccessKey.SecretAccessKey
     Export:
       Name: !Sub '${AWS::Region}-${AWS::StackName}-PhccpServiceUserSecretAccessKey'
-  CodeDeployServiceRoleArn:
-    Value: !GetAtt CodeDeployServiceRole.Arn
+  CodeDeployDeployerRoleArn:
+    Value: !GetAtt CodeDeployDeployerRole.Arn
     Export:
-      Name: !Sub '${AWS::Region}-${AWS::StackName}-CodeDeployServiceRoleArn'
+      Name: !Sub '${AWS::Region}-${AWS::StackName}-CodeDeployDeployerRoleArn'
