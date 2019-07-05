@@ -10,7 +10,7 @@ Resources:
   # 1. Detach or remove the following user resources: login profile, attached
   #    MFA device, access-keys, ssh-keys, and policies.
   # 2. Detach the user from all groups.
-    AWSIAMEliasChaibubNetoUser:
+  AWSIAMEliasChaibubNetoUser:
     Type: 'AWS::IAM::User'
     Properties:
       UserName: elias.chaibub.neto@sagebase.org
