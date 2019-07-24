@@ -19,7 +19,7 @@ Resources:
         - !Ref AWSIAMDeveloperUsersGroup
       LoginProfile:
         Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true 
+        PasswordResetRequired: true
   AWSIAMEliasChaibubNetoUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -29,7 +29,7 @@ Resources:
         - !Ref AWSIAMDeveloperUsersGroup
       LoginProfile:
         Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true 
+        PasswordResetRequired: true
   AWSIAMJinetaBanerjeeUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -39,7 +39,7 @@ Resources:
         - !Ref AWSIAMDeveloperUsersGroup
       LoginProfile:
         Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true 
+        PasswordResetRequired: true
   AWSIAMBrianWhiteUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -336,7 +336,7 @@ Resources:
       PolicyDocument:
         Version: '2012-10-17'
         Statement:
-          - 
+          -
             Effect: Allow
             Action:
             - autoscaling:*
@@ -442,6 +442,7 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/ReadOnlyAccess
         - !Ref AWSIAMEnforceMfaPolicy
+        - !Ref AWSViewReportsPolicy
   AWSIAMBillingManagersGroup:
     Type: 'AWS::IAM::Group'
     Properties:
@@ -550,6 +551,19 @@ Resources:
             Condition:
               BoolIfExists:
                 'aws:MultiFactorAuthPresent': 'false'
+  # policy allows viewing cost and usage reports
+  AWSViewReportsPolicy:
+    Type: 'AWS::IAM::ManagedPolicy'
+    Properties:
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Sid: AllowUserToViewUsage
+            Effect: Allow
+            Action:
+              - 'aws-portal:ViewUsage'
+              - 'aws-portal:ViewBilling'
+            Resource: '*'
 Outputs:
   AWSIAMEnforceMfaPolicy:
     Value: !Ref AWSIAMEnforceMfaPolicy
@@ -567,3 +581,7 @@ Outputs:
     Value: !GetAtt CodeDeployDeployerRole.Arn
     Export:
       Name: !Sub '${AWS::Region}-${AWS::StackName}-CodeDeployDeployerRoleArn'
+  AWSViewReportsPolicy:
+    Value: !Ref AWSViewReportsPolicy
+    Export:
+      Name: !Sub '${AWS::Region}-${AWS::StackName}-ViewReportsPolicy'
