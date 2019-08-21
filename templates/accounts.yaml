@@ -393,6 +393,7 @@ Resources:
                 - !GetAtt AWSIAMAaronHaydenUser.Arn
                 - !GetAtt AWSIAMKennethDailyUser.Arn
                 - !GetAtt AWSIAMRobertMinnekerUser.Arn
+                - !GetAtt AWSIAMXindiGuoUser.Arn
             Action:
               - "sts:AssumeRole"
       Path: "/"
