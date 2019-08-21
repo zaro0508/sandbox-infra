@@ -432,7 +432,6 @@ Resources:
                 - !GetAtt AWSIAMTessThyerUser.Arn
                 - !GetAtt AWSIAMAaronHaydenUser.Arn
                 - !GetAtt AWSIAMKennethDailyUser.Arn
-                - !GetAtt AWSIAMRobertMinnekerUser.Arn
                 - !GetAtt AWSIAMBruceHoffUser.Arn
             Action:
               - "sts:AssumeRole"
