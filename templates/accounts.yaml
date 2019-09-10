@@ -312,6 +312,13 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
+  CelgeneAnnotatorServiceUser:
+    Type: 'AWS::IAM::User'
+  CelgeneAnnotatorServiceUserAccessKey:
+    Type: 'AWS::IAM::AccessKey'
+    Properties:
+      UserName: !Ref CelgeneAnnotatorServiceUser
+
   # for deployments from Sage-Bionetworks/PHCCollaborationPortal repo
   PhccpServiceUser:
     Type: 'AWS::IAM::User'
@@ -597,6 +604,18 @@ Resources:
               - 'aws-portal:ViewBilling'
             Resource: '*'
 Outputs:
+  CelgeneAnnotatorServiceUserArn:
+    Value: !GetAtt CelgeneAnnotatorServiceUser.Arn
+    Export:
+      Name: !Sub '${AWS::Region}-${AWS::StackName}-CelgeneAnnotatorServiceUserArn'
+  CelgeneAnnotatorServiceUserAccessKey:
+    Value: !Ref CelgeneAnnotatorServiceUserAccessKey
+    Export:
+      Name: !Sub '${AWS::Region}-${AWS::StackName}-CelgeneAnnotatorServiceUserAccessKey'
+  CelgeneAnnotatorServiceUserSecretAccessKey:
+    Value: !GetAtt CelgeneAnnotatorServiceUserAccessKey.SecretAccessKey
+    Export:
+      Name: !Sub '${AWS::Region}-${AWS::StackName}-CelgeneAnnotatorServiceUserSecretAccessKey'
   AWSIAMEnforceMfaPolicy:
     Value: !Ref AWSIAMEnforceMfaPolicy
     Export:
