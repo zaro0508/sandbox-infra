@@ -314,6 +314,9 @@ Resources:
         PasswordResetRequired: true
   CelgeneAnnotatorServiceUser:
     Type: 'AWS::IAM::User'
+    Properties:
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
   CelgeneAnnotatorServiceUserAccessKey:
     Type: 'AWS::IAM::AccessKey'
     Properties:
