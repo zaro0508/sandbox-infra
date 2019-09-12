@@ -483,6 +483,7 @@ Resources:
     Properties:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/ReadOnlyAccess
+        - arn:aws:iam::aws:policy/AWSSupportAccess
         - !Ref AWSIAMEnforceMfaPolicy
         - !Ref AWSViewReportsPolicy
   AWSIAMBillingManagersGroup:
