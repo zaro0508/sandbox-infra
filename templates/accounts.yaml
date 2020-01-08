@@ -434,6 +434,7 @@ Resources:
                 - !GetAtt AWSIAMKennethDailyUser.Arn
                 - !GetAtt AWSIAMRobertMinnekerUser.Arn
                 - !GetAtt AWSIAMBruceHoffUser.Arn
+                - !GetAtt AWSIAMEvaMonsenUser.Arn
             Action:
               - "sts:AssumeRole"
       Path: "/"
