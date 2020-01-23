@@ -443,6 +443,7 @@ Resources:
                 - !GetAtt AWSIAMAaronHaydenUser.Arn
                 - !GetAtt AWSIAMKennethDailyUser.Arn
                 - !GetAtt AWSIAMBruceHoffUser.Arn
+                - !GetAtt AWSIAMEvaMonsenUser.Arn
             Action:
               - "sts:AssumeRole"
       Path: "/"
