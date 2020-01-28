@@ -302,6 +302,16 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
+  AWSIAMLauraHeathUser:
+    Type: 'AWS::IAM::User'
+    Properties:
+      UserName: laura.heath@sagebase.org
+      Groups:
+        - !Ref AWSIAMAllUsersGroup
+        - !Ref AWSIAMDeveloperUsersGroup
+      LoginProfile:
+        Password: !Ref InitNewUserPassword
+        PasswordResetRequired: true
   AWSIAMThomasCoreyUser:
     Type: 'AWS::IAM::User'
     Properties:
