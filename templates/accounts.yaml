@@ -40,6 +40,16 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
+  AWSIAMDanWebsterUser:
+  Type: 'AWS::IAM::User'
+  Properties:
+    UserName: dan.webster@sagebase.org
+    Groups:
+      - !Ref AWSIAMAllUsersGroup
+      - !Ref AWSIAMDeveloperUsersGroup
+    LoginProfile:
+      Password: !Ref InitNewUserPassword
+      PasswordResetRequired: true
   AWSIAMVerenaChungUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -708,4 +718,5 @@ Outputs:
     Value: !GetAtt AWSIAMAdminRole.Arn
     Export:
       Name: !Sub '${AWS::Region}-${AWS::StackName}-AdminRoleArn'
+      
 
