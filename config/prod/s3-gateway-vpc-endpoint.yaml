@@ -6,7 +6,5 @@ parameters:
   VpcName: sandcastlevpc
   ServiceName: com.amazonaws.us-east-1.s3
 hooks:
-  before_create:
-    - !cmd "curl https://s3.amazonaws.com/{{stack_group_config.admincentral_cf_bucket}}/aws-infra/master/gateway-vpc-endpoint.yaml --create-dirs -o templates/remote/gateway-vpc-endpoint.yaml"
-  before_update:
+  before_launch:
     - !cmd "curl https://s3.amazonaws.com/{{stack_group_config.admincentral_cf_bucket}}/aws-infra/master/gateway-vpc-endpoint.yaml --create-dirs -o templates/remote/gateway-vpc-endpoint.yaml"
