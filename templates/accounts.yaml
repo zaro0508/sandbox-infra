@@ -357,6 +357,7 @@ Resources:
         - !Ref AWSIAMDynamoDenyDeletePolicy
         - !Ref AWSIAMRdsDenyDeletePolicy
         - arn:aws:iam::aws:policy/AWSCodeDeployFullAccess
+        - arn:aws:iam::aws:policy/AWSBatchFullAccess
   CodeDeployDeployerRole:
     Type: "AWS::IAM::Role"
     Properties:
