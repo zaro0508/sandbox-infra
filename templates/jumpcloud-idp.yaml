@@ -3,17 +3,17 @@ AWSTemplateFormatVersion: 2010-09-09
 Parameters:
   SandboxAdminMetadata:
     Type: String
-    Description: "Public certificate for Jumpcloud itsandbox-admin app"
+    Description: "Public certificate for Jumpcloud sandbox-admin app"
   SandboxDeveloperMetadata:
     Type: String
-    Description: "Public certificate for Jumpcloud itsandbox-developer app"
+    Description: "Public certificate for Jumpcloud sandbox-developer app"
 Resources:
   SandboxAdminSamlProvider:
     Type: Custom::SAMLProvider
     Properties:
       ServiceToken: !ImportValue
         'Fn::Sub': '${AWS::Region}-cfn-cr-saml-provider-FunctionArn'
-      Name: "itsandbox-admin"
+      Name: "sandbox-admin"
       Metadata: !Ref SandboxAdminMetadata
       URL: ""
   SandboxAdminSamlProviderRole:
