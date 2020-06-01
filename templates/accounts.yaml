@@ -311,16 +311,6 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
-  AWSIAMEvaMonsenUser:
-    Type: 'AWS::IAM::User'
-    Properties:
-      UserName: eva.monsen@sagebase.org
-      Groups:
-        - !Ref AWSIAMAllUsersGroup
-        - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMKaraWooUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -478,7 +468,6 @@ Resources:
                 - !GetAtt AWSIAMTessThyerUser.Arn
                 - !GetAtt AWSIAMAaronHaydenUser.Arn
                 - !GetAtt AWSIAMBruceHoffUser.Arn
-                - !GetAtt AWSIAMEvaMonsenUser.Arn
             Action:
               - "sts:AssumeRole"
       Path: "/"
