@@ -291,16 +291,6 @@ Resources:
       LoginProfile:
         Password: !Ref InitNewUserPassword
         PasswordResetRequired: true
-  AWSIAMRobertMinnekerUser:
-    Type: 'AWS::IAM::User'
-    Properties:
-      UserName: robert.minneker@sagebase.org
-      Groups:
-        - !Ref AWSIAMAllUsersGroup
-        - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMLauraHeathUser:
     Type: 'AWS::IAM::User'
     Properties:
