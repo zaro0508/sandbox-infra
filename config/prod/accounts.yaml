@@ -3,5 +3,3 @@ stack_name: accounts
 dependencies:
   - prod/essentials.yaml
   - prod/iam-policies.yaml
-parameters:
-  InitNewUserPassword: !ssm /infra/InitNewUserPassword
