@@ -9,3 +9,4 @@ parameters:
   SandboxDeveloperMetadata: !file_contents idp/jumpcloud/sandbox-developer.xml
 dependencies:
   - "prod/cfn-cr-saml-provider.yaml"
+  - "prod/iam-policies.yaml"
