@@ -1,9 +1,5 @@
 Description: Setup IAM policies, groups and accounts
 AWSTemplateFormatVersion: 2010-09-09
-Parameters:
-  InitNewUserPassword:
-    Type: String
-    NoEcho: true
 Resources:
   # !! IMPORTANT !! - AWS API will refuse to remove users that have attached resources.
   # Therefore you must do the following before deleting them from this file:
@@ -17,9 +13,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMCindyMolitorUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -27,9 +20,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMKelseyMontgomeryUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -37,9 +27,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMBrianMBotUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -47,9 +34,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMDanWebsterUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -57,8 +41,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
   AWSIAMVerenaChungUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -66,9 +48,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMArytonTediarjoUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -76,9 +55,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMEliasChaibubNetoUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -86,9 +62,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMJinetaBanerjeeUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -96,9 +69,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMBrianWhiteUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -106,9 +76,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMMichaelMasonUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -116,9 +83,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMMattWallUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -126,9 +90,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMAndrewLambUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -136,9 +97,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMXindiGuoUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -146,9 +104,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMMilenNikolovUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -156,9 +111,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMZimingDongTestUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -166,9 +118,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMXavierSchildwachterUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -177,9 +126,6 @@ Resources:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
         - !Ref AWSIAMBillingManagersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMKhaiDoUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -188,9 +134,6 @@ Resources:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
         - !Ref AWSIAMBillingManagersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMThomasYuUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -198,9 +141,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMPhilSnyderUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -208,9 +148,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMRobertAllawayUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -218,9 +155,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMXengieDoanUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -228,9 +162,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMJakeGockleyUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -238,9 +169,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMThomasSchaffterUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -248,9 +176,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMWilliamPoehlmanUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -258,9 +183,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMTessThyerUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -268,9 +190,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMAaronHaydenUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -278,9 +197,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMJamesEddyUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -288,9 +204,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMLauraHeathUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -298,9 +211,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMKaraWooUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -308,9 +218,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMBruceHoffUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -318,9 +225,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   AWSIAMLarssonOmbergUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -328,9 +232,6 @@ Resources:
       Groups:
         - !Ref AWSIAMAllUsersGroup
         - !Ref AWSIAMDeveloperUsersGroup
-      LoginProfile:
-        Password: !Ref InitNewUserPassword
-        PasswordResetRequired: true
   CelgeneAnnotatorServiceUser:
     Type: 'AWS::IAM::User'
     Properties:
