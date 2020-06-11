@@ -7,8 +7,8 @@ parameters:
   LaunchRoleName: "SCEC2LaunchRole"
   PrincipalRoleName1: "ServiceCatalogEndusers"
   PrincipalGroupName1: "ServiceCatalogEndusers"
-  RepoRootURL: "https://s3.amazonaws.com/{{stack_group_config.admincentral_cf_bucket}}/scipoolprod-sc-lib-infra/master/"
+  RepoRootURL: "https://{{stack_group_config.admincentral_cf_bucket}}.s3.amazonaws.com/scipoolprod-sc-lib-infra/master/"
   StackDatetime: !date
 hooks:
   before_launch:
-    - !cmd "curl https://s3.amazonaws.com/{{stack_group_config.admincentral_cf_bucket}}/scipoolprod-sc-lib-infra/master/ec2/sc-portfolio-ec2.yaml --create-dirs -o templates/remote/sc-portfolio-ec2.yaml"
+    - !cmd "curl https://{{stack_group_config.admincentral_cf_bucket}}.s3.amazonaws.com/scipoolprod-sc-lib-infra/master/ec2/sc-portfolio-ec2.yaml --create-dirs -o templates/remote/sc-portfolio-ec2.yaml"
