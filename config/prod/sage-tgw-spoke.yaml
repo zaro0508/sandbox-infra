@@ -8,7 +8,7 @@ dependencies:
   - "prod/essentials.yaml"
   - "prod/sandcastlevpc.yaml"
 parameters:
-  TransitGatewayId: "tgw-0748a242ec78b5740"     # shared TGW from org-sagebase-transit
+  TransitGatewayId: "tgw-00d248c4cfce0d06e"     # shared TGW from org-sagebase-transit
   TransitGatewayEndpointCidr: "10.50.0.0/16"
   VpcRouteTableId: !stack_output_external sandcastlevpc::PrivateRouteTable
   VpcId: !stack_output_external sandcastlevpc::VPCId
@@ -18,4 +18,4 @@ parameters:
     - !stack_output_external sandcastlevpc::PrivateSubnet2
 hooks:
   before_launch:
-    - !cmd "curl https://{{stack_group_config.admincentral_cf_bucket}}.s3.amazonaws.com/rotate-credentials/master/transit-gateway-spoke.yaml --create-dirs -o templates/remote/transit-gateway-spoke.yaml"
+    - !cmd "curl https://{{stack_group_config.admincentral_cf_bucket}}.s3.amazonaws.com/aws-infra/master/transit-gateway-spoke.yaml --create-dirs -o templates/remote/transit-gateway-spoke.yaml"
