@@ -8,7 +8,7 @@ dependencies:
   - "prod/essentials.yaml"
   - "prod/sandcastlevpc.yaml"
 parameters:
-  TransitGatewayId: "tgw-00d248c4cfce0d06e"     # shared TGW from org-sagebase-transit
+  TransitGatewayId: "tgw-0004e7e3454cacac5"     # shared TGW from org-sagebase-transit
   TransitGatewayEndpointCidr: "10.50.0.0/16"
   VpcRouteTableId: !stack_output_external sandcastlevpc::PrivateRouteTable
   VpcId: !stack_output_external sandcastlevpc::VPCId
